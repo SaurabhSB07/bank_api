@@ -118,8 +118,8 @@ Unit tests are included in **`core/tests.py`** to cover the core functionality:
 
 | Task | Estimated Time |
 | :--- | :--- |
-| Environment Setup, DB & Project Structure | 30 minutes |
-| Models, Serializers, Views, and URLs Implementation | 75 minutes |
-| Writing Unit Tests | 60 minutes |
-| Documentation (README) | 15 minutes |
+| Environment Setup, DB & Project Structure | 60 minutes |
+| Models, Serializers, Views, and URLs Implementation | 120 minutes |
+| Writing Unit Tests | 90 minutes |
+| Documentation (README) | 45 minutes |
 
