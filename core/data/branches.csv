@@ -1,0 +1,5 @@
+ifsc,bank_id,branch,address,city,district,state
+SBIN0000001,1,MAIN BRANCH,Mumbai,Mumbai,Mumbai,Maharashtra
+HDFC0001234,2,KOLKATA BRANCH,Kolkata,Kolkata,Kolkata,West Bengal
+ICIC0005678,3,CHENNAI BRANCH,Chennai,Chennai,Chennai,Tamil Nadu
+UTIB0002222,4,PUNE BRANCH,Pune,Pune,Pune,Maharashtra
