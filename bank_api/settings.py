@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-*c*v)vx!tpv^y2d%6j$6(8#^)#4a#_5-(6e0q0q(vfmtc33v$@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'bank-api-7btg.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
+
 
 
 # Application definition
@@ -49,7 +54,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'bank_api.urls'
 
@@ -71,20 +79,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'bank_api.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+
+import os
+import dj_database_url
+
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bank_db',
-        'USER': 'postgres',
-        'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
 }
 
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret-key')
+
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -120,4 +129,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
