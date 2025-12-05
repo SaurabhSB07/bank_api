@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: bank_api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn bank_api.wsgi
