@@ -1,6 +1,13 @@
-from rest_framework import generics, filters
+from django.http import HttpResponse
+from rest_framework import generics
+
 from .models import Bank, Branch
 from .serializers import BankSerializer, BranchSerializer
+
+
+def home(request):
+    return HttpResponse("Bank API is running successfully 🚀")
+
 
 class BankListAPIView(generics.ListAPIView):
     queryset = Bank.objects.all()
@@ -12,8 +19,6 @@ class BranchListAPIView(generics.ListAPIView):
     serializer_class = BranchSerializer
 
 
-# Search branches by IFSC or branch name
-
 class BranchSearchAPIView(generics.ListAPIView):
     serializer_class = BranchSerializer
 
@@ -23,3 +28,4 @@ class BranchSearchAPIView(generics.ListAPIView):
         if ifsc:
             queryset = queryset.filter(ifsc=ifsc)
         return queryset
+
